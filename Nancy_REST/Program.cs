@@ -22,6 +22,7 @@ namespace Nancy_REST
 
             using (var host = new NancyHost(hostConfigs, uri))
             {
+                DBPopulator.Populate();
                 host.Start();
                 Console.WriteLine("Listening to requests on localhost:1234");
                 Console.ReadLine();
