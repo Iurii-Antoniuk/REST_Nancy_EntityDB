@@ -43,8 +43,8 @@ namespace Nancy_REST
                     bool exists = users.Where(x => x.UserId == pars.userId).Any();
                     if (exists)
                     {
-                        int id = Convert.ToInt32(pars.userId);
-                        context.Remove(context.Users.Single(u => u.UserId == id));
+                        var user = users.Where(x => x.UserId == pars.userId).First();
+                        context.Users.Remove(user);
                         context.SaveChanges();
                         return "User has been successfully removed";
                     }
